@@ -113,7 +113,15 @@ button          { background: var(--button); padding: 0; margin: 0; }
 button:focus    { background: var(--focus); }
 button:active   { background: var(--active); }
 button:disabled { background: var(--neutral1); color: var(--neutral3); }
-.box-button        { padding: 0 var(--charW2); box-shadow: var(--charW1) var(--charW1) var(--shadow); white-space: pre; }
+#buttonsAndTimeline {
+    display: flex;
+    flex-direction: row;
+}
+.box-button        { 
+    height: 25px;
+    margin: 6px;
+    align-self: center;
+    padding: 0 var(--charW2); box-shadow: var(--charW1) var(--charW1) var(--shadow); white-space: pre; }
 .box-button:active { box-shadow: none; }
 
 input[type=text] {
@@ -300,10 +308,10 @@ body,#root {
 }
 
 .AppFooter {
-    border-top: 1px solid var(--clickable);
+    border: 1px solid var(--clickable);
     margin: 0 var(--charW2neg);
     flex-shrink: 0;
-    height: 210px;
+/*    height: 210px;*/
     display: flex;
 }
 
@@ -332,7 +340,11 @@ body,#root {
  https://stackoverflow.com/questions/42802717
 */
 .AppFooter-main-inner {
-    padding: var(--charH) var(--charW2);
+    padding: 0;
+}
+
+marquee {
+vertical-align: bottom;
 }
 
 .AppFooter-settings {
@@ -462,7 +474,7 @@ body,#root {
     margin-left: 1px; /* Don't cover the right border of App-main-inner */
 }
 
-.TimeSlider { flex-grow: 1; margin: var(--charH) 0; }
+.TimeSlider { flex-grow: 1; margin: 5px; }
 .TimeSlider-labels, .VolumeSlider-labels { display: flex; flex-direction: row; justify-content: space-between; }
 
 .VolumeSlider { flex-shrink: 0; margin-top: var(--charH); margin-bottom: var(--charH); margin-left: var(--charW2); }

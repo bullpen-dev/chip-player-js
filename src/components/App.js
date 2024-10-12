@@ -702,7 +702,6 @@ class App extends React.Component {
                       infoTexts={this.state.infoTexts}
                       toggleInfo={this.toggleInfo}/>
           <Toast/>
-          <AppHeader/>
           <div className="App-main">
             <div className="App-main-inner">
               <div className="tab-container">
