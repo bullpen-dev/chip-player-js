@@ -93,11 +93,11 @@ Build fluidlite (uses Cmake):
 ```sh
 cd chip-player-js/fluidlite/     # navigate to fluidlite root
 source ~/src/emsdk/emsdk_env.sh  # load the emscripten environment variables
-mkdir build                      # create a build folder for Cmake output
-cd build                         
+mkdir build                      # create a build folder for Cmake output                         
 emcmake cmake -DDISABLE_SF3=1 .. # Cmake will generate a Makefile by default
                                  # Problems here? Try deleting CMake cache files
 emmake make fluidlite-static
+mv libfluidlite.a build          # move output to build
 ```
 
 #### Subproject: psflib and lazyusf2

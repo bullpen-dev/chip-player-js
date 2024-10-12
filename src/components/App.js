@@ -23,13 +23,13 @@ import requestCache from '../RequestCache';
 import LocalFilesManager from '../LocalFilesManager';
 import Sequencer, { NUM_REPEAT_MODES, NUM_SHUFFLE_MODES, REPEAT_OFF, SHUFFLE_OFF } from '../Sequencer';
 
-import GMEPlayer from '../players/GMEPlayer';
+// import GMEPlayer from '../players/GMEPlayer';
 import MIDIPlayer from '../players/MIDIPlayer';
-import V2MPlayer from '../players/V2MPlayer';
-import XMPPlayer from '../players/XMPPlayer';
-import N64Player from '../players/N64Player';
-import MDXPlayer from '../players/MDXPlayer';
-import VGMPlayer from '../players/VGMPlayer';
+// import V2MPlayer from '../players/V2MPlayer';
+// import XMPPlayer from '../players/XMPPlayer';
+// import N64Player from '../players/N64Player';
+// import MDXPlayer from '../players/MDXPlayer';
+// import VGMPlayer from '../players/VGMPlayer';
 
 import AppFooter from './AppFooter';
 import AppHeader from './AppHeader';
@@ -148,12 +148,12 @@ class App extends React.Component {
     // Create all the players. Players will set up IDBFS mount points.
     const players = [
       MIDIPlayer,
-      GMEPlayer,
-      XMPPlayer,
-      V2MPlayer,
-      N64Player,
-      MDXPlayer,
-      VGMPlayer,
+      // GMEPlayer,
+      // XMPPlayer,
+      // V2MPlayer,
+      // N64Player,
+      // MDXPlayer,
+      // VGMPlayer,
     ].map(P => new P(this.chipCore, audioCtx.sampleRate, bufferSize, debug));
     this.midiPlayer = players[0];
 
@@ -799,7 +799,7 @@ class App extends React.Component {
                 }
               </div>
             </div>
-            {!isMobile.phone && !this.state.loading &&
+            {false && !isMobile.phone && !this.state.loading &&
               <Visualizer audioCtx={this.audioCtx}
                           sourceNode={this.playerNode}
                           chipCore={this.chipCore}

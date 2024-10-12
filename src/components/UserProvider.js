@@ -12,7 +12,7 @@ import {
   arrayRemove,
   arrayUnion
 } from 'firebase/firestore/lite';
-import firebaseConfig from '../config/firebaseConfig';
+// import firebaseConfig from '../config/firebaseConfig';
 
 const UserContext = createContext({
   user: null,
@@ -59,36 +59,36 @@ const UserProvider = ({ children }) => {
   const [showPlayerSettings, setShowPlayerSettings] = useState(false);
   const [loadingUser, setLoadingUser] = useState(true); // Manage loading state
 
-  useEffect(() => {
-    // Initialize Firebase
-    const firebaseApp = firebaseInitializeApp(firebaseConfig);
-    const auth = getAuth(firebaseApp);
-    const db = getFirestore(firebaseApp);
-    onAuthStateChanged(auth, user => {
-      setUser(user);
-      setLoadingUser(false);
-      if (user) {
-        const docRef = doc(db, 'users', user.uid);
-        getDoc(docRef)
-          .then(userSnapshot => {
-            if (!userSnapshot.exists()) {
-              // Create user
-              console.debug('Creating user document', user.uid);
-              setDoc(docRef, {
-                faves: [],
-                settings: {},
-              });
-            } else {
-              // Restore user
-              const data = userSnapshot.data();
-              const faves = migrateFaves(data.faves || []);
-              setFaves(faves);
-              setShowPlayerSettings(data.settings?.showPlayerSettings || false);
-            }
-          });
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   // Initialize Firebase
+  //   const firebaseApp = firebaseInitializeApp({});
+  //   const auth = getAuth(firebaseApp);
+  //   const db = getFirestore(firebaseApp);
+  //   onAuthStateChanged(auth, user => {
+  //     setUser(user);
+  //     setLoadingUser(false);
+  //     if (user) {
+  //       const docRef = doc(db, 'users', user.uid);
+  //       getDoc(docRef)
+  //         .then(userSnapshot => {
+  //           if (!userSnapshot.exists()) {
+  //             // Create user
+  //             console.debug('Creating user document', user.uid);
+  //             setDoc(docRef, {
+  //               faves: [],
+  //               settings: {},
+  //             });
+  //           } else {
+  //             // Restore user
+  //             const data = userSnapshot.data();
+  //             const faves = migrateFaves(data.faves || []);
+  //             setFaves(faves);
+  //             setShowPlayerSettings(data.settings?.showPlayerSettings || false);
+  //           }
+  //         });
+  //     }
+  //   });
+  // }, []);
 
   const handleLogin = async () => {
     const auth = getAuth();
